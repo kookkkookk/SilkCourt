@@ -1,0 +1,1 @@
+$(function(){function e(){var e=$.Deferred();return $("header").load("templates/header.html"),e.resolve(),e.promise()}function o(){var e=$.Deferred();return $("footer").load("templates/footer.html"),e.resolve(),e.promise()}e().then(o).done(function(){}).fail(function(e){console.log("err")}).always(function(){secondFn()})});

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024">
+	<meta charset="UTF-8">
+	<title>潤泰敦峰</title>
+	<meta name="keywords" content="潤泰敦峰">
+	<meta name="description" content="潤泰敦峰">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.11.4.min.js"></script>
+	<script src="js/TweenMax.1.17.0.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="css/contact.css">
+	<link rel="shortcut icon" href="images/icon.ico" />
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+	document.createElement('footer');
+	document.createElement('hgroup');
+	</script>
+	<![endif]-->
+</head>
+
+<body>
+
+<div class="world">
+
+	<header></header>
+
+	<div class="content">
+
+		<div class="page1 pageCommon">
+			<div class="pageCommonLightPic"></div>
+			<div class="page1Group pageContent">
+				<div class="article">
+					<h1 class="movingOpacity">Leisure truly is a pleasure</h1>
+					<p class="movingVerticalDelay1">每一時段 我們只接待一組貴賓</p>
+					<p class="movingVerticalDelay2">以維護您的參訪隱私</p>
+					<p class="movingVerticalDelay3">並為您提供最高規格服務</p>
+					<p class="movingVerticalDelay4">煩請貴賓填寫以下資訊</p>
+					<p class="movingVerticalDelay5">我們將儘速由專人為您安排參觀事宜</p>
+					<p class="movingVerticalDelay6">造成您的不便 敬請見諒</p>
+				</div>
+
+				<div class="contactBox movingVerticalDelay7">
+					<div class="inputBox">
+						<div class="inputFill"><input id="username" type="text" class="inputName" placeholder="貴賓姓名 /">
+							<div class="radioBox">
+								<input id="gender" type="radio" name="gender" value="man"> 先生
+								<input id="gender" type="radio" name="gender" value="woman"> 小姐
+							</div>
+						</div>
+						<div class="inputFill">
+							<div class="radioBoxAge">
+								<input id="age1" type="radio" name="age" value="forty">　40歲以下
+								<input id="age2" type="radio" name="age" value="fortyToFifty">　40-50歲
+								<input id="age3" type="radio" name="age" value="fifty">　50歲以上
+							</div>
+						</div>
+						<div class="inputFill"><input id="comoany" type="text" placeholder="企業名稱 /"></div>
+						<div class="inputFill"><input id="city" type="text" placeholder="國家地區 /"></div>
+						<div class="inputFill"><input id="phone" type="tel" placeholder="聯絡電話 /"><div id="status"></div></div>
+						<div class="inputFill"><input id="email" type="e-mail" placeholder="電子信箱 /"><div id="status"></div></div>
+						<div class="inputFill"><input id="submit_btn"  type="submit" value="Submit"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<footer></footer>
+
+</div>
+	
+</body>
+
+<script type="text/javascript">
+function secondFn(){
+
+	var scrollFn = function(){
+		// var windowHeight = $(window).height();
+		// var scrollTop = $(window).scrollTop();
+		// var scrollPosition = windowHeight + scrollTop;
+		// console.log("scrollTop: ",scrollTop , "windowHeight: ",windowHeight);
+
+		$(".movingOpacity, .movingLevel, .movingVertical").not('.on').each(function(){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top+120 ){										
+				j_this.addClass("on");					
+			// }
+		});
+
+		//take2_li
+		$(".movingVerticalDelay1, .movingVerticalDelay2, .movingVerticalDelay3, .movingVerticalDelay4, .movingVerticalDelay5, .movingVerticalDelay6, .movingVerticalDelay7").not('.on').each(function(i){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top ){
+				j_this.addClass("on");
+			// }
+		});
+	};
+
+	var blurFn = function(){
+		$(".pageCommonLightPic").fadeIn(800, function() {
+			$(".pageCommon").css("background-image","url('')");
+			scrollFn();
+		});
+		
+	}
+
+	TweenMax.from( ".pageCommon", 1 , {
+		delay:1.2,
+		autoAlpha:0,
+		scale:1.3,
+		ease:Circ.easeOut,
+		onComplete:goNext
+	});
+	function goNext(){
+		blurFn();
+        // scrollFn();
+    }
+};
+</script>
+</html>

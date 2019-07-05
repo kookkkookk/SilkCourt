@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024">
+	<meta charset="UTF-8">
+	<title>潤泰敦峰</title>
+	<meta name="keywords" content="潤泰敦峰">
+	<meta name="description" content="潤泰敦峰">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.11.4.min.js"></script>
+	<script src="js/TweenMax.1.17.0.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="css/brand.css">
+	<link rel="shortcut icon" href="images/icon.ico" />
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+	document.createElement('footer');
+	document.createElement('hgroup');
+	</script>
+	<![endif]-->
+</head>
+
+<body>
+
+<div class="world">
+
+	<header></header>
+
+	<div class="content">
+
+		<div class="page1 pageCommon">
+			<div class="pageCommonLightPic"></div>
+			<!-- <div class="space"><img src="images/teamsBg.jpg" width="100%"></div> -->
+			<div class="page1Group pageContent">
+				<div class="article">
+					<h1 class="movingOpacity">BRAND</h1>
+					<h2 class="movingVerticalDelay1">一甲子跨國集團</h2>
+					<span class="movingVerticalDelay2"></span>
+					<h3 class="movingVerticalDelay2">創新　超越　領先　全方位</h3>
+					<p class="movingVerticalDelay3">台灣預鑄工法，榮登Discovery建築奇觀專題報導</p>
+					<p class="movingVerticalDelay4">211項493件專利工法、12大工學密碼</p>
+					<p class="movingVerticalDelay5">不斷精進升級的感動級售服與安心級保障</p>
+					<p class="movingVerticalDelay6">打造第四代豪宅，潤泰4.0創新建築</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</div>
+	
+</body>
+
+<script type="text/javascript">
+function secondFn(){
+
+	var scrollFn = function(){
+		// var windowHeight = $(window).height();
+		// var scrollTop = $(window).scrollTop();
+		// var scrollPosition = windowHeight + scrollTop;
+		// console.log("scrollTop: ",scrollTop , "windowHeight: ",windowHeight);
+
+		$(".movingOpacity, .movingLevel, .movingVertical").not('.on').each(function(){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top+120 ){										
+				j_this.addClass("on");					
+			// }
+		});
+
+		//take2_li
+		$(".movingVerticalDelay1, .movingVerticalDelay2, .movingVerticalDelay3, .movingVerticalDelay4, .movingVerticalDelay5").not('.on').each(function(i){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top ){
+				j_this.addClass("on");
+			// }
+		});
+	};
+
+	var blurFn = function(){
+		$(".pageCommonLightPic").fadeIn(800, function() {
+			$(".pageCommon").css("background-image","url('')");
+			scrollFn();
+		});
+		
+	}
+
+	TweenMax.from( ".pageCommon", 1 , {
+		delay:0.8,
+		autoAlpha:0,
+		y: 200,
+		ease:Circ.easeOut,
+		onComplete:goNext
+	});
+	function goNext(){
+		blurFn();
+        // scrollFn();
+    }
+};
+</script>
+</html>

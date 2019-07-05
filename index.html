@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024">
+	<meta charset="UTF-8">
+	<title>潤泰敦峰</title>
+	<meta name="keywords" content="潤泰敦峰">
+	<meta name="description" content="潤泰敦峰">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.11.4.min.js"></script>
+	<script src="js/TweenMax.1.17.0.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="css/home.css">
+	<link rel="shortcut icon" href="images/icon.ico" />
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+	document.createElement('footer');
+	document.createElement('hgroup');
+	</script>
+	<![endif]-->
+</head>
+<body>
+
+<div class="world">
+
+	<header></header>
+
+	<div class="content">
+		<div class="SceenSpace"><img src="images/SceenSpace.png" width="100%"></div>
+		<div id="youtubeLoadSpace">
+			<div class="youtubeLoadSpaceGif"></div>
+		</div>
+		<div id="player"></div>
+		<div class="skipBtn">Skip</div>
+
+		<div class="page1 pageCommon">
+			<div class="page1Group pageContent">
+				<h1 class="movingOpacity">To Discover</h1>
+				<div class="article">
+					<p class="movingVerticalDelay1">去感受 去探索</p>
+					<p class="movingVerticalDelay2">去發掘 去體驗</p>
+					<p class="movingVerticalDelay3">人生是一系列</p>
+					<p class="movingVerticalDelay4">美好價值的選擇</p>
+					<p class="movingVerticalDelay5">1345坪 森林大宅</p>
+					<p class="movingVerticalDelay6">微風旁</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</div>
+	
+</body>
+
+<script type="text/javascript">
+
+var randomArray = ['8-wbE5dTKP8','IDQhMr0yAUk'];
+var random = randomArray[Math.floor(Math.random()*randomArray.length)]
+
+var youtubePlaySwitch = false;
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+      videoId: random,
+      playerVars: {
+      	rel: 0,
+      	modestbranding: 0,
+      	controls: 0,
+      	playsinline: 0,
+      	autohide: 0,
+      	showinfo: 0
+      	
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+}
+
+// autoplay video
+function onPlayerReady(event) {
+	event.target.playVideo(); 
+	$("#youtubeLoadSpace").delay(1000).fadeOut(800);
+}
+
+// when video ends
+function onPlayerStateChange(event) {        
+    if(event.data === 0 && youtubePlaySwitch == false) { 
+    	$('.skipBtn').hide();           
+    	$('#player').fadeOut(1000,function(){
+    		$('.page1').css('background-image','url("images/homePic.jpg")');
+    		YouTubeEndCallBack();
+    	});
+    }
+}
+function YoutubeSize(){
+	var worldH = $(".world").width();
+	var sceenH = $(".SceenSpace").height();
+	var sceenHOK = sceenH-40;
+	if(worldH > 1367){
+		$("#player").height(sceenHOK);
+		$(".content").css('height','auto');
+	}else{
+		$("#player").height(661);
+		$(".content").height(710);
+	}
+}
+$(function(){
+	YoutubeSize();
+});
+$( window ).resize(function() {
+	YoutubeSize();
+});
+
+
+
+$('.skipBtn').on('click', function() {
+	youtubePlaySwitch = true;
+	$('.skipBtn').hide();        
+	$('#player').fadeOut('slow',function(){
+		// $('#player').remove();
+		player.stopVideo();
+		$('.page1').css('background-image','url("images/homePic.jpg")');
+		YouTubeEndCallBack();
+	});
+});
+
+
+function secondFn(){
+	console.log('ScreenFnOk');
+}
+function YouTubeEndCallBack(){
+
+	var scrollFn = function(){
+		// var windowHeight = $(window).height();
+		// var scrollTop = $(window).scrollTop();
+		// var scrollPosition = windowHeight + scrollTop;
+		// console.log("scrollTop: ",scrollTop , "windowHeight: ",windowHeight);
+
+		$(".movingOpacity, .movingLevel, .movingVertical").not('.on').each(function(){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top+120 ){										
+				j_this.addClass("on");					
+			// }
+		});
+
+		//take2_li
+		$(".movingVerticalDelay1, .movingVerticalDelay2, .movingVerticalDelay3, .movingVerticalDelay4, .movingVerticalDelay5, .movingVerticalDelay6").not('.on').each(function(i){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top ){
+				j_this.addClass("on");
+			// }
+		});
+	};
+	/*$(window).scroll(function(){
+		scrollFn();
+	});*/
+
+	TweenMax.from( ".pageCommon", 0.8 , {
+		autoAlpha:0,
+		scale:1.3,
+		ease:Circ.easeOut,
+		onComplete:goNext
+	});
+	function goNext(){
+        scrollFn();
+    }
+}
+</script>
+</html>

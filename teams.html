@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024">
+	<meta charset="UTF-8">
+	<title>潤泰敦峰</title>
+	<meta name="keywords" content="潤泰敦峰">
+	<meta name="description" content="潤泰敦峰">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.11.4.min.js"></script>
+	<script src="js/TweenMax.1.17.0.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="css/teams.css">
+	<link rel="shortcut icon" href="images/icon.ico" />
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+	document.createElement('footer');
+	document.createElement('hgroup');
+	</script>
+	<![endif]-->
+</head>
+<style type="text/css">
+#owl-demo{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.owl-controls{
+	position: relative;
+}
+.owl-pagination{
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+}
+@media screen and (max-width: 1024px) {
+	.owl-pagination{
+		bottom: -10px;
+	}	
+}
+</style>
+<body>
+
+<div class="world">
+
+	<header></header>
+
+	<div class="content">
+
+		<div class="page1 pageCommon">
+			<!-- <div class="space"><img src="images/teamsBg.jpg" width="100%"></div> -->
+			<!-- <div class="page1Group pageContent"> -->
+
+			<div id="owl-demo" class="owl-carousel owl-theme">
+				<div class="item item1">
+					<div class="articleRound movingOpacity">
+						<h2 class="movingOpacity">Maldives in Taipei</h2>
+						<h3 class="movingVerticalDelay1">潤泰創新 飛越18000哩 收錄世界品味</h3>
+						<p class="movingVerticalDelay2">一場文化的跨海壯遊</p>
+						<p class="movingVerticalDelay3">一座建築的跨限再造</p>
+					</div>
+				</div>
+				<div class="item item3">
+					<div class="peopleL"></div>
+					<div class="peopleR"></div>
+					<div class="article">
+						<h2>Interior</br>Design</h2>
+						<p class="articleP1">eco.id 建築設計公司</br>eco.id Architects and Design Consultancy</p>
+						<span></span>
+						<p class="articleP2">馬爾地夫W Hotel設計團隊</p>
+					</div>
+				</div>
+				<div class="item item2">
+					<div class="peopleL"></div>
+					<div class="peopleR"></div>
+					<div class="article">
+						<h2>Architect</h2>
+						<p class="articleP1">陳傳宗建築師事務所</br>C.T. Chen & Partners</p>
+						<span></span>
+						<p class="articleP2">台北豪宅舵手 收錄世界品味</p>
+					</div>
+				</div>
+				<div class="item item4">
+					<div class="peopleSingo"></div>
+					<div class="article">
+						<h2>Landscape</br>Architecture</h2>
+						<p class="articleP1">內藤恆方</p>
+						<span></span>
+						<p class="articleP2">東京國際會議中心 景觀設計宗師</p>
+					</div>
+				</div>
+				<div class="item item6">
+					<div class="peopleSingo"></div>
+					<div class="article">
+						<h2>Lighting</br>Design</h2>
+						<p class="articleP1">月河燈光設計公司</br>Chan Moon Architecture Lighting Design,lnc.</p>
+						<span></span>
+						<p class="articleP2">享譽國際 當代城市燈光設計師</p>
+					</div>
+				</div>
+				<div class="item item5">
+					<div class="peopleSingo"></div>
+					<div class="article">
+						<h2>Structural<br/>Engineering</h2>
+						<p class="articleP1">永峻工程顧問公司</p>
+						<p>Evergreen Consulting Engineerung,lnc.</p>
+						<span></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- </div> -->
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</div>
+	
+</body>
+
+<script type="text/javascript">
+function secondFn(){
+	$("#owl-demo").owlCarousel({
+
+		// navigation : true, // Show next and prev buttons
+		slideSpeed : 300,
+		paginationSpeed : 400,
+		singleItem:true
+
+		// "singleItem:true" is a shortcut for:
+		// items : 1, 
+		// itemsDesktop : false,
+		// itemsDesktopSmall : false,
+		// itemsTablet: false,
+		// itemsMobile : false
+
+	});
+
+	var scrollFn = function(){
+		// var windowHeight = $(window).height();
+		// var scrollTop = $(window).scrollTop();
+		// var scrollPosition = windowHeight + scrollTop;
+		// console.log("scrollTop: ",scrollTop , "windowHeight: ",windowHeight);
+
+		$(".movingOpacity, .movingLevel, .movingVertical").not('.on').each(function(){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top+120 ){										
+				j_this.addClass("on");					
+			// }
+		});
+
+		//take2_li
+		$(".movingVerticalDelay1, .movingVerticalDelay2, .movingVerticalDelay3, .movingVerticalDelay4, .movingVerticalDelay5").not('.on').each(function(i){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top ){
+				j_this.addClass("on");
+			// }
+		});
+	};
+	/*$(window).scroll(function(){
+		scrollFn();
+	});*/
+
+	TweenMax.from( ".pageCommon", 0.8 , {
+		delay:1.2,
+		autoAlpha:0,
+		scale:1.3,
+		ease:Circ.easeOut,
+		onComplete:goNext
+	});
+	function goNext(){
+        scrollFn();
+    }
+};
+</script>
+</html>

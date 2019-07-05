@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=1024">
+	<meta charset="UTF-8">
+	<title>潤泰敦峰</title>
+	<meta name="keywords" content="潤泰敦峰">
+	<meta name="description" content="潤泰敦峰">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/jquery-ui-1.11.4.min.js"></script>
+	<script src="js/TweenMax.1.17.0.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>
+
+	<link rel="stylesheet" href="css/architecture.css">
+	<link rel="shortcut icon" href="images/icon.ico" />
+
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('header');
+	document.createElement('nav');
+	document.createElement('section');
+	document.createElement('article');
+	document.createElement('figure');
+	document.createElement('aside');
+	document.createElement('footer');
+	document.createElement('hgroup');
+	</script>
+	<![endif]-->
+</head>
+<style type="text/css">
+#owl-demo{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.owl-controls{
+	position: relative;
+}
+.owl-pagination{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+</style>
+<body>
+
+<div class="world">
+
+	<header></header>
+
+	<div class="content">
+
+		<div class="page1 pageCommon">
+			<!-- <div class="space"><img src="images/teamsBg.jpg" width="100%"></div> -->
+			<!-- <div class="page1Group pageContent"> -->
+
+			<div id="owl-demo" class="owl-carousel owl-theme">
+				<div class="item item1">
+					<div class="articleRound movingOpacity">
+						<h2 class="movingOpacity">The Silk Court</h2>
+						<span></span>
+						<h3 class="movingVerticalDelay1">旅行建築 讓心靈在「家」出走</h3>
+						<p class="movingVerticalDelay2">評價一座城市 要看它擁有多少花園</p>
+						<p class="movingVerticalDelay3">評價一座建築 要看它據離花園的距離有多近</p>
+						<p class="movingVerticalDelay4">一座有機城市的綠色主張</p>
+					</div>
+				</div>
+				<div class="item item2"></div>
+				<div class="item item3"></div>
+				<div class="item item4"></div>
+			</div>
+			<div class="bannerArrowL bannerArrowCommon"></div>
+			<div class="bannerArrowR bannerArrowCommon"></div>
+
+			<!-- </div> -->
+		</div>
+
+	</div>
+
+	<footer></footer>
+
+</div>
+	
+</body>
+
+<script type="text/javascript">
+function secondFn(){
+	$("#owl-demo").owlCarousel({
+		// navigation : true, // Show next and prev buttons
+		slideSpeed : 300,
+		paginationSpeed : 400,
+		singleItem:true
+
+		// "singleItem:true" is a shortcut for:
+		// items : 1, 
+		// itemsDesktop : false,
+		// itemsDesktopSmall : false,
+		// itemsTablet: false,
+		// itemsMobile : false
+
+	});
+	$(".bannerArrowR").click(function(){
+	  $("#owl-demo").trigger('owl.next');
+	})
+	$(".bannerArrowL").click(function(){
+	  $("#owl-demo").trigger('owl.prev');
+	})
+
+	var scrollFn = function(){
+		// var windowHeight = $(window).height();
+		// var scrollTop = $(window).scrollTop();
+		// var scrollPosition = windowHeight + scrollTop;
+		// console.log("scrollTop: ",scrollTop , "windowHeight: ",windowHeight);
+
+		$(".movingOpacity, .movingLevel, .movingVertical").not('.on').each(function(){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top+120 ){										
+				j_this.addClass("on");					
+			// }
+		});
+
+		//take2_li
+		$(".movingVerticalDelay1, .movingVerticalDelay2, .movingVerticalDelay3, .movingVerticalDelay4, .movingVerticalDelay5").not('.on').each(function(i){
+			var j_this = $(this);
+			// if(  scrollPosition > j_this.offset().top ){
+				j_this.addClass("on");
+			// }
+		});
+	};
+	/*$(window).scroll(function(){
+		scrollFn();
+	});*/
+
+	TweenMax.from( ".pageCommon", 0.8 , {
+		delay:1.2,
+		autoAlpha:0,
+		scale:1.3,
+		ease:Circ.easeOut,
+		onComplete:goNext
+	});
+	function goNext(){
+        scrollFn();
+    }
+};
+</script>
+</html>
